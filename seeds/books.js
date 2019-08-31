@@ -14,7 +14,7 @@ exports.seed = function(knex) {
 						isbn: faker.random.number({ min: 1000000000000, max: 9999999999999 }),
 						author: faker.name.findName(),
 						publisher: faker.name.findName(),
-						year: faker.random.number({ min: 1950, max: 2019 }),
+						year: faker.random.number({ min: 1500, max: new Date().getFullYear() }),
 						language: faker.address.country(),
 						weight: faker.random.number({ min: 20, max: 300 }),
 						height: faker.random.number({ min: 20, max: 300 }),
