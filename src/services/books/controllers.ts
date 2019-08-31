@@ -8,6 +8,10 @@ export const getBooks = async (req: Request, res: Response, next: NextFunction) 
 	const offset = page * limit
 	let books = []
 
+	const { count } = await Book.query()
+		.count('id')
+		.first()
+
 	if (searchTerm) {
 		const subquery = Book.query()
 			.orWhere('title', 'like', `%${searchTerm}%`)
@@ -39,6 +43,7 @@ export const getBooks = async (req: Request, res: Response, next: NextFunction) 
 
 	res.status(200).send({
 		ok: true,
+		totalBooks: count,
 		books,
 	})
 }
