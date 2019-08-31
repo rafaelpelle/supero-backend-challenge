@@ -8,7 +8,7 @@ export const getBooks = async (req: Request, res: Response, next: NextFunction) 
 	const offset = page * limit
 	let books = []
 
-	const { count } = await Book.query()
+	const { count: totalBooks } = await Book.query()
 		.count('id')
 		.first()
 
@@ -43,7 +43,7 @@ export const getBooks = async (req: Request, res: Response, next: NextFunction) 
 
 	res.status(200).send({
 		ok: true,
-		totalBooks: count,
+		totalBooks,
 		books,
 	})
 }
