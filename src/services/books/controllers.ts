@@ -27,8 +27,5 @@ export const getBooks = async (req: Request, res: Response, next: NextFunction) 
 	res.status(200).send({
 		ok: true,
 		books,
-		initialDate,
-		endDate,
-		searchTerm,
 	})
 }
