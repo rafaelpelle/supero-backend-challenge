@@ -8,7 +8,6 @@ Node
 Yarn (recommended)
 ```
 
-
 ## Docker setup
 ```
 docker run -t -d -p 5432:5432 postgres:10-alpine

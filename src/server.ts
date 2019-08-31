@@ -1,5 +1,6 @@
 import http from 'http'
 import express from 'express'
+import cors from 'cors'
 import { applyMiddleware, applyRoutes } from './utils'
 import middleware from './middleware'
 import routes from './services'
@@ -17,6 +18,14 @@ process.on('unhandledRejection', (e) => {
 
 setupDatabase().then(() => {
 	const router = express()
+
+	router.use(
+		cors({
+			credentials: true,
+			origin: true,
+		})
+	)
+
 	applyRoutes(routes, router)
 	applyMiddleware(middleware, router)
 
