@@ -1,17 +1,25 @@
 # supero-backend-challenge
 RESTful API built with Nodejs, Express, TypeScript, PostgreSQL...
 
-### Docker setup
+## Requirements
+```
+Docker
+Node
+Yarn (recommended)
+```
+
+
+## Docker setup
 ```
 docker run -t -d -p 5432:5432 postgres:10-alpine
 ```
 
-### Install dependencies
+## Install dependencies
 ```
 yarn install
 ```
 
-### Usage
+## Usage
 To run the development server:
 ```
 yarn run dev
