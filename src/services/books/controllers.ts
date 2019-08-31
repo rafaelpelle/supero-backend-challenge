@@ -3,6 +3,9 @@ import { Book } from '../../models/book'
 
 export const getBooks = async (req: Request, res: Response, next: NextFunction) => {
 	const { initialDate, endDate, searchTerm } = req.query
+	const page = req.query.page || 0
+	const limit = 10
+	const offset = page * limit
 	let books = []
 
 	if (searchTerm) {
@@ -13,15 +16,25 @@ export const getBooks = async (req: Request, res: Response, next: NextFunction) 
 			.select('id')
 		books =
 			!initialDate && !endDate
-				? await Book.query().where('id', 'in', subquery)
+				? await Book.query()
+						.where('id', 'in', subquery)
+						.limit(limit)
+						.offset(offset)
 				: await Book.query()
+						.limit(limit)
+						.offset(offset)
 						.whereBetween('year', [initialDate, endDate])
 						.andWhere('id', 'in', subquery)
 	} else {
 		books =
 			!initialDate && !endDate
 				? await Book.query()
-				: await Book.query().whereBetween('year', [initialDate, endDate])
+						.limit(limit)
+						.offset(offset)
+				: await Book.query()
+						.whereBetween('year', [initialDate, endDate])
+						.limit(limit)
+						.offset(offset)
 	}
 
 	res.status(200).send({
