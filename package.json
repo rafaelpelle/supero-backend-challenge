@@ -8,7 +8,7 @@
 	"license": "ISC",
 	"scripts": {
 		"dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
-		"start": "node dist/server.js"
+		"start": "pm2 start ./dist/server.js"
 	},
 	"dependencies": {
 		"@types/compression": "^0.0.36",
