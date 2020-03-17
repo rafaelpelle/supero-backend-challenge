@@ -1,7 +1,7 @@
 # supero-backend-challenge
 RESTful API built with Nodejs, Express, TypeScript, PostgreSQL...
 
-**Live at: https://api.supero.rafaelpelle.tech/**
+**Live at: https://supero-book-api.herokuapp.com/**
 
 ## Requirements
 ```
